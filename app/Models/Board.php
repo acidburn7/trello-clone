@@ -15,15 +15,18 @@ class Board extends Model
         'title'
     ];
 
-    public function user() : BelongsTo
+    public function user(): BelongsTo
     {
         return $this->belongsTo(User::class);
     }
 
     public function columns(): HasMany
     {
-        return $this->hasMany(Column::class);
+        return $this->hasMany(Column::class)->oldest();
     }
 
-
+    public function addColumn(Column $column): void
+    {
+        $this->columns()->save($column);
+    }
 }
