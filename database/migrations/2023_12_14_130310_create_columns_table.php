@@ -13,9 +13,9 @@ return new class extends Migration
     {
         Schema::create('columns', function (Blueprint $table) {
             $table->id();
+            $table->string('title', 250)->comment('название столбца');
+            $table->foreignId('board_id')->constrained();
             $table->timestamps();
-            $table->string('name', 250)->comment('название столбца');
-            $table->foreign('board_id')->references('id')->on('boards');
         });
     }
 

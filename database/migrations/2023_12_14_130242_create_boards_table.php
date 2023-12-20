@@ -15,8 +15,8 @@ return new class extends Migration
             $table->id();
             $table->timestamps();
 
-            $table->string('name', 150)->comment('название доски');
-            $table->foreign('user_id')->references('id')->on('users');
+            $table->string('title', 150)->comment('название доски');
+            $table->foreignId('user_id')->constrained();
         });
     }
 

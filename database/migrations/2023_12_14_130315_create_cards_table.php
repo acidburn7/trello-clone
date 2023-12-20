@@ -13,14 +13,13 @@ return new class extends Migration
     {
         Schema::create('cards', function (Blueprint $table) {
             $table->id();
-            $table->timestamps();
 
-            $table->string('title', 150)->comment('заголовок');
-            $table->text('description')->comment('описание');
+            $table->string('title', 150)->nullable()->comment('заголовок');
+            $table->text('description')->nullable()->comment('описание');
             $table->integer('position');
+            $table->foreignId('column_id')->constrained();
 
-            $table->foreign('column_id')->references('id')->on('columns');
-            $table->foreign('user_id')->references('id')->on('users');
+            $table->timestamps();
         });
     }
 
