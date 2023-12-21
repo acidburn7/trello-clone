@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
 use App\Http\Controllers\BoardController;
+use App\Http\Controllers\BoardColumnCreateController;
 
 /*
 |--------------------------------------------------------------------------
@@ -38,5 +39,7 @@ Route::middleware('auth')->group(function () {
 });
 
 Route::get('/baord/{board}', [BoardController::class, 'show']);
+Route::post('/boards/{board}/columns', BoardColumnCreateController::class)
+    ->name('boards.columns.store');
 
 require __DIR__.'/auth.php';
